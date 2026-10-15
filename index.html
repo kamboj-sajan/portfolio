@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sajan Kamboj — Developer</title>
+  <meta name="description" content="Portfolio of Sajan Kamboj — developer building fast, interactive experiences for the web." />
+  <meta name="theme-color" content="#05050a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.min.js" } }
+  </script>
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__count" id="loaderCount">0</div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- WebGL background -->
+  <canvas id="webgl" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="nav__logo magnetic">SK<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn--small magnetic">Let's talk</a>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <p class="eyebrow reveal"><span class="dot"></span> Available for work</p>
+      <h1 class="hero__title">
+        <span class="line"><span class="split">Sajan</span></span>
+        <span class="line"><span class="split gradient-text">Kamboj</span></span>
+      </h1>
+      <p class="hero__sub reveal">
+        Developer crafting <span class="typed" id="typed">immersive web experiences</span><span class="caret">|</span>
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#work" class="btn magnetic">View my work</a>
+        <a href="#contact" class="btn btn--ghost magnetic">Get in touch</a>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Creative Development</span><span>✦</span><span>WebGL</span><span>✦</span>
+        <span>UI Engineering</span><span>✦</span><span>Full-Stack</span><span>✦</span>
+        <span>Motion Design</span><span>✦</span><span>Performance</span><span>✦</span>
+        <span>Creative Development</span><span>✦</span><span>WebGL</span><span>✦</span>
+        <span>UI Engineering</span><span>✦</span><span>Full-Stack</span><span>✦</span>
+        <span>Motion Design</span><span>✦</span><span>Performance</span><span>✦</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="section__label reveal">01 — About</div>
+      <div class="about__grid">
+        <h2 class="section__title reveal">I build things for the web that feel <em>alive</em>.</h2>
+        <div class="about__text">
+          <p class="reveal">
+            I'm a developer who loves the space where design meets engineering. I turn ideas into
+            fast, accessible, and delightful interfaces — from clean product UIs to real-time 3D scenes.
+          </p>
+          <p class="reveal">
+            When I'm not shipping code, I'm exploring shaders, experimenting with motion, and learning
+            whatever new tool makes the web a little more fun.
+          </p>
+          <div class="stats">
+            <div class="stat glass reveal"><span class="stat__num" data-count="3">0</span><span class="stat__plus">+</span><p>Years coding</p></div>
+            <div class="stat glass reveal"><span class="stat__num" data-count="20">0</span><span class="stat__plus">+</span><p>Projects built</p></div>
+            <div class="stat glass reveal"><span class="stat__num" data-count="10">0</span><span class="stat__plus">+</span><p>Technologies</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section skills" id="skills">
+      <div class="section__label reveal">02 — Skills</div>
+      <div class="skills__grid">
+        <div>
+          <h2 class="section__title reveal">My toolkit.</h2>
+          <p class="muted reveal">Drag across the sphere to spin it. These are the tools I reach for every day.</p>
+          <ul class="skill-list">
+            <li class="reveal"><span>Frontend</span>React, Next.js, TypeScript, Tailwind</li>
+            <li class="reveal"><span>3D &amp; Motion</span>Three.js, GLSL, GSAP, WebGL</li>
+            <li class="reveal"><span>Backend</span>Node.js, Express, Python, REST</li>
+            <li class="reveal"><span>Data &amp; Tools</span>MongoDB, PostgreSQL, Git, Docker</li>
+          </ul>
+        </div>
+        <div class="tag-sphere reveal" id="tagSphere" aria-label="Skills sphere"></div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="section work" id="work">
+      <div class="section__label reveal">03 — Selected Work</div>
+      <h2 class="section__title reveal">Projects I'm proud of.</h2>
+      <div class="cards">
+        <article class="card reveal" data-tilt>
+          <div class="card__glare"></div>
+          <div class="card__art art-1"></div>
+          <div class="card__body">
+            <span class="card__num">01</span>
+            <h3>Nebula Dashboard</h3>
+            <p>Real-time analytics dashboard with animated 3D data visualisations and live websockets.</p>
+            <div class="card__tags"><span>React</span><span>Three.js</span><span>Node</span></div>
+          </div>
+        </article>
+        <article class="card reveal" data-tilt>
+          <div class="card__glare"></div>
+          <div class="card__art art-2"></div>
+          <div class="card__body">
+            <span class="card__num">02</span>
+            <h3>Shader Playground</h3>
+            <p>An in-browser GLSL editor with hot reload, presets and shareable links for generative art.</p>
+            <div class="card__tags"><span>WebGL</span><span>GLSL</span><span>TypeScript</span></div>
+          </div>
+        </article>
+        <article class="card reveal" data-tilt>
+          <div class="card__glare"></div>
+          <div class="card__art art-3"></div>
+          <div class="card__body">
+            <span class="card__num">03</span>
+            <h3>Pulse Commerce</h3>
+            <p>Full-stack storefront with 3D product previews, cart, payments and an admin panel.</p>
+            <div class="card__tags"><span>Next.js</span><span>MongoDB</span><span>Stripe</span></div>
+          </div>
+        </article>
+        <article class="card reveal" data-tilt>
+          <div class="card__glare"></div>
+          <div class="card__art art-4"></div>
+          <div class="card__body">
+            <span class="card__num">04</span>
+            <h3>Echo Chat</h3>
+            <p>Lightning-fast messaging app with presence, typing indicators and end-to-end encryption.</p>
+            <div class="card__tags"><span>Socket.io</span><span>Express</span><span>Redis</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="section__label reveal">04 — Contact</div>
+      <h2 class="contact__title reveal">Let's build something <span class="gradient-text">unreal</span>.</h2>
+      <p class="muted reveal">Have a project in mind or just want to say hi? My inbox is always open.</p>
+      <a href="mailto:kambojsajan646@gmail.com" class="btn btn--big magnetic reveal">kambojsajan646@gmail.com</a>
+      <div class="socials reveal">
+        <a href="https://github.com/kamboj-sajan" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="#" target="_blank" rel="noopener">Twitter ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Sajan Kamboj</span>
+    <span>Built with Three.js &amp; a lot of coffee</span>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
