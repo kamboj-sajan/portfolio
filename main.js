@@ -317,12 +317,13 @@ function createScene() {
   scene.add(particles);
 
   /* ---- Scroll keyframes: where the blob sits for each section ---- */
-  const sectionEls = [...document.querySelectorAll('.hero, #about, #skills, #work, #contact')];
+  const sectionEls = [...document.querySelectorAll('.hero, #about, #skills, #work, #achievements, #contact')];
   const desktopFrames = [
     { x: 2.1, y: 0.0, z: 0, s: 1.0, hue: 0.0 },
     { x: -3.0, y: -1.5, z: -2, s: 0.75, hue: 0.33 },
     { x: -3.6, y: -1.6, z: -3, s: 0.6, hue: 0.55 },
     { x: 0.0, y: 0.0, z: -6, s: 1.3, hue: 0.8 },
+    { x: 3.2, y: -1.2, z: -4, s: 0.8, hue: 0.9 },
     { x: 0.0, y: 0.0, z: -6, s: 1.2, hue: 1.0 },
   ];
   const mobileFrames = [
@@ -330,6 +331,7 @@ function createScene() {
     { x: 1.3, y: -1.6, z: -4, s: 0.6, hue: 0.33 },
     { x: -1.3, y: -1.6, z: -4, s: 0.55, hue: 0.55 },
     { x: 0.0, y: 0.0, z: -8, s: 1.1, hue: 0.8 },
+    { x: 1.2, y: -1.6, z: -5, s: 0.7, hue: 0.9 },
     { x: 0.0, y: 0.0, z: -7, s: 1.0, hue: 1.0 },
   ];
   let sectionCenters = [];
@@ -524,7 +526,7 @@ function startReveals() {
 /* ------------------------------------------------------------------ */
 function startTyping() {
   const el = document.getElementById('typed');
-  const words = ['immersive web experiences', 'interactive 3D worlds', 'pixel-perfect interfaces', 'scalable full-stack apps'];
+  const words = ['AI-powered web apps', 'RAG pipelines & AI agents', 'cloud IDEs', 'low-level tools in C++', 'RISC-V cores in SystemVerilog'];
   if (reduceMotion) return;
   let w = 0;
   let i = words[0].length;
@@ -619,9 +621,10 @@ if (!isTouch) {
 (function tagSphere() {
   const root = document.getElementById('tagSphere');
   const skills = [
-    'React', 'Next.js', 'TypeScript', 'JavaScript', 'Three.js', 'GLSL', 'WebGL', 'GSAP',
-    'Node.js', 'Express', 'Python', 'MongoDB', 'PostgreSQL', 'Tailwind', 'HTML5', 'CSS3',
-    'Git', 'Docker', 'Redis', 'REST', 'GraphQL', 'Figma', 'Vite', 'Linux',
+    'C++', 'TypeScript', 'JavaScript', 'Python', 'SQL', 'React', 'Next.js', 'Tailwind',
+    'Node.js', 'Express', 'Convex', 'PostgreSQL', 'pgvector', 'Prisma', 'Redis', 'LangChain',
+    'Gemini', 'RAG', 'Docker', 'GitHub Actions', 'Cloud Run', 'AWS', 'Vercel', 'Clerk',
+    'Inngest', 'Solidity', 'Hardhat', 'SystemVerilog', 'Three.js', 'Git',
   ];
   const golden = Math.PI * (3 - Math.sqrt(5));
   const points = skills.map((name, i) => {
