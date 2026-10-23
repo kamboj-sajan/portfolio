@@ -2,7 +2,14 @@ import { ArrowUp } from 'lucide-react';
 import ContactButton from '../components/ContactButton';
 import FadeIn from '../components/FadeIn';
 import PillLink from '../components/PillLink';
+import ThreeCanvas from '../components/ThreeCanvas';
+import type { SceneCreator } from '../components/ThreeCanvas';
 import { profile, socials } from '../data/portfolio';
+
+const createGlobe: SceneCreator = async (canvas, reducedMotion) => {
+  const { createGlobeScene } = await import('../three/globeScene');
+  return createGlobeScene(canvas, { reducedMotion });
+};
 
 export default function ContactSection() {
   return (
@@ -10,6 +17,11 @@ export default function ContactSection() {
       id="contact"
       className="relative z-30 -mt-10 rounded-t-[40px] bg-ink px-5 pb-8 pt-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:pt-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:pt-32"
     >
+      <ThreeCanvas
+        create={createGlobe}
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]"
+      />
+
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 text-center sm:gap-10">
         <FadeIn className="inline-flex items-center gap-2.5 rounded-full border border-mist/20 px-4 py-2 text-[11px] font-light uppercase tracking-widest text-mist/80 sm:text-xs">
           <span className="relative flex h-2 w-2" aria-hidden="true">
