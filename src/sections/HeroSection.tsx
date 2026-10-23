@@ -1,11 +1,22 @@
+import { useCallback, useRef } from 'react';
 import ContactButton from '../components/ContactButton';
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
+import ThreeCanvas from '../components/ThreeCanvas';
+import type { SceneCreator } from '../components/ThreeCanvas';
 import { navLinks, profile } from '../data/portfolio';
 
 export default function HeroSection() {
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const createAura = useCallback<SceneCreator>(async (canvas, reducedMotion) => {
+    const { createHeroScene } = await import('../three/heroScene');
+    return createHeroScene(canvas, { reducedMotion, focus: portraitRef });
+  }, []);
+
   return (
-    <section id="top" className="relative flex h-screen h-svh flex-col" style={{ overflowX: 'clip' }}>
+    <section id="top" className="relative isolate flex h-screen h-svh flex-col" style={{ overflowX: 'clip' }}>
+      <ThreeCanvas create={createAura} className="fade-bottom pointer-events-none absolute inset-0 -z-10" />
+
       <FadeIn
         as="nav"
         delay={0}
@@ -51,7 +62,10 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[280px] max-w-[62vh] -translate-x-1/2 -translate-y-1/2 select-none sm:w-[360px] sm:landscape:bottom-0 sm:landscape:top-auto sm:landscape:translate-y-0 md:w-[440px] lg:w-[520px]">
+      <div
+        ref={portraitRef}
+        className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[280px] max-w-[62vh] -translate-x-1/2 -translate-y-1/2 select-none sm:w-[360px] sm:landscape:bottom-0 sm:landscape:top-auto sm:landscape:translate-y-0 md:w-[440px] lg:w-[520px]"
+      >
         <FadeIn delay={0.6} y={30}>
           <Magnet
             padding={150}

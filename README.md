@@ -1,6 +1,6 @@
 # Sajan Kamboj — Portfolio
 
-Personal portfolio built with React, TypeScript, Tailwind CSS and Framer Motion: a giant gradient hero with a magnetic 3D portrait, a scroll-driven project marquee, a scroll-revealed bio, sticky stacking project cards and a contact section. Respects `prefers-reduced-motion`.
+Personal portfolio built with React, TypeScript, Tailwind CSS, Framer Motion and Three.js: a giant gradient hero with a magnetic 3D portrait inside WebGL orbit rings, a scroll-driven project marquee, a scroll-revealed bio, sticky stacking project cards and a contact section with a 3D signal globe. Respects `prefers-reduced-motion`.
 
 ## Run locally
 
@@ -19,12 +19,22 @@ Everything on the page (profile, stats, skills, projects, achievements, links) l
 - **Project cards:** each card takes three images from `public/images/projects/`: two stacked on the left, one tall on the right.
 - **Marquee:** `public/images/marquee/` holds 840×540 WebP tiles. The first 11 entries of `marqueeImages` form the top row, the rest the bottom row.
 
+## 3D scenes
+
+Two Three.js scenes, loaded lazily in their own chunk once the page has rendered:
+
+- **Hero orbits** (`src/three/heroScene.ts`): orbit rings with travelling moons around the portrait, inside a twinkling star field. They follow the pointer and drift away as you scroll.
+- **Contact globe** (`src/three/globeScene.ts`): a dotted globe with signal ripples spreading from a few points and pulses travelling along arcs.
+
+Each scene pauses when offscreen or in a background tab, renders one still frame under `prefers-reduced-motion`, and the page works without WebGL.
+
 ## Structure
 
 ```
 src/
-  components/   FadeIn, Magnet, AnimatedText, CountUp, ContactButton, LiveProjectButton, PillLink
+  components/   FadeIn, Magnet, AnimatedText, CountUp, ContactButton, LiveProjectButton, PillLink, ThreeCanvas
   sections/     Hero, Marquee, About, Skills, Projects, Achievements, Contact
+  three/        heroScene, globeScene, shaders
   data/         portfolio.ts — all copy and links
 public/images/  hero portrait, About decor, marquee tiles, project screenshots
 ```

@@ -51,6 +51,12 @@
     outline-offset: -3px;
   }
 
+  /* Fades a scene out before its section ends, so glow never stops at a hard edge. */
+  .fade-bottom {
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent);
+  }
+
   .btn-contact:focus-visible {
     outline-color: #d7e2ea;
     outline-offset: 3px;
