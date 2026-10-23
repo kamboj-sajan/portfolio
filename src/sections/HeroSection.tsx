@@ -1,5 +1,4 @@
 import { useCallback, useRef } from 'react';
-import ContactButton from '../components/ContactButton';
 import FadeIn from '../components/FadeIn';
 import Magnet from '../components/Magnet';
 import ThreeCanvas from '../components/ThreeCanvas';
@@ -47,7 +46,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="relative z-20 mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+      <div className="relative z-20 mt-auto px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn
           as="p"
           delay={0.35}
@@ -56,9 +55,6 @@ export default function HeroSection() {
           style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
         >
           {profile.tagline}
-        </FadeIn>
-        <FadeIn delay={0.5} y={20}>
-          <ContactButton />
         </FadeIn>
       </div>
 
