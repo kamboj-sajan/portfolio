@@ -1,280 +1,31 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sajan Kamboj — Full-Stack Developer</title>
-  <meta name="description" content="Sajan Kamboj — full-stack developer and competitive programmer (LeetCode Knight, Codeforces Specialist) building AI-powered web apps. B.Tech ECE @ NSUT Delhi." />
-  <meta name="theme-color" content="#05050a" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script type="importmap">
-    { "imports": { "three": "./vendor/three.module.min.js" } }
-  </script>
-</head>
-<body>
-  <!-- Loader -->
-  <div class="loader" id="loader">
-    <div class="loader__count" id="loaderCount">0</div>
-    <div class="loader__bar"><span id="loaderBar"></span></div>
-  </div>
-
-  <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- WebGL background -->
-  <canvas id="webgl" aria-hidden="true"></canvas>
-  <div class="grain" aria-hidden="true"></div>
-
-  <header class="nav">
-    <a href="#top" class="nav__logo magnetic">SK<span>.</span></a>
-    <nav class="nav__links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#work">Work</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="#contact" class="btn btn--small magnetic">Let's talk</a>
-  </header>
-
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <p class="eyebrow reveal"><span class="dot"></span> Open to SDE internship &amp; full-time roles</p>
-      <h1 class="hero__title">
-        <span class="line"><span class="split">Sajan</span></span>
-        <span class="line"><span class="split gradient-text">Kamboj</span></span>
-      </h1>
-      <p class="hero__sub reveal">
-        Full-stack developer &amp; competitive programmer building <span class="typed" id="typed">AI-powered web apps</span><span class="caret">|</span>
-      </p>
-      <div class="hero__cta reveal">
-        <a href="#work" class="btn magnetic">View my work</a>
-        <a href="https://github.com/kamboj-sajan" target="_blank" rel="noopener" class="btn btn--ghost magnetic">GitHub ↗</a>
-      </div>
-      <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
-    </section>
-
-    <!-- Marquee -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Full-Stack</span><span>✦</span><span>AI &amp; RAG</span><span>✦</span>
-        <span>Competitive Programming</span><span>✦</span><span>System Design</span><span>✦</span>
-        <span>C++</span><span>✦</span><span>RISC-V</span><span>✦</span>
-        <span>Full-Stack</span><span>✦</span><span>AI &amp; RAG</span><span>✦</span>
-        <span>Competitive Programming</span><span>✦</span><span>System Design</span><span>✦</span>
-        <span>C++</span><span>✦</span><span>RISC-V</span><span>✦</span>
-      </div>
-    </div>
-
-    <!-- About -->
-    <section class="section about" id="about">
-      <div class="section__label reveal">01 — About</div>
-      <div class="about__grid">
-        <div>
-          <h2 class="section__title reveal">I build AI-powered apps and solve hard problems <em>fast</em>.</h2>
-          <p class="about__edu reveal">
-            <span>B.Tech ECE (IoT)</span>
-            Netaji Subhas University of Technology, Delhi · Class of 2027
-          </p>
-        </div>
-        <div class="about__text">
-          <p class="reveal">
-            I'm a full-stack developer and competitive programmer. I build AI-powered web apps with
-            Next.js, Node.js and PostgreSQL — from RAG pipelines and AI tutors to cloud IDEs with
-            isolated code execution.
-          </p>
-          <p class="reveal">
-            I also like going close to the metal: a pipelined RISC-V core in SystemVerilog and Linux
-            hardware diagnostics in C++. Right now I'm going deep on system design and low-level design,
-            and grinding contests on LeetCode and Codeforces.
-          </p>
-          <div class="stats">
-            <div class="stat glass reveal"><span class="stat__num" data-count="2041">0</span><p>LeetCode peak · Knight</p></div>
-            <div class="stat glass reveal"><span class="stat__num" data-count="750">0</span><span class="stat__plus">+</span><p>Problems solved</p></div>
-            <div class="stat glass reveal"><span class="stat__num" data-count="1437">0</span><p>Codeforces peak · Specialist</p></div>
-            <div class="stat glass reveal"><span class="stat__num" data-count="1626">0</span><p>CodeChef max rating</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="section skills" id="skills">
-      <div class="section__label reveal">02 — Skills</div>
-      <div class="skills__grid">
-        <div>
-          <h2 class="section__title reveal">My toolkit.</h2>
-          <p class="muted reveal">Drag across the sphere to spin it. These are the tools I reach for every day.</p>
-          <ul class="skill-list">
-            <li class="reveal"><span>Languages</span>C++, TypeScript, JavaScript, Python, SQL</li>
-            <li class="reveal"><span>Frontend</span>React, Next.js, Tailwind CSS, ShadCN UI</li>
-            <li class="reveal"><span>Backend</span>Node.js, Express, Convex, REST APIs, Webhooks</li>
-            <li class="reveal"><span>Databases</span>PostgreSQL (Neon), pgvector, Prisma, Redis</li>
-            <li class="reveal"><span>AI</span>LangChain, Gemini API, RAG pipelines, Amazon Bedrock</li>
-            <li class="reveal"><span>Cloud &amp; Tools</span>Docker, GitHub Actions, Cloud Run, AWS, Vercel, Inngest, Clerk</li>
-            <li class="reveal"><span>Also</span>Solidity, Hardhat, SystemVerilog, Verilator</li>
-          </ul>
-        </div>
-        <div class="tag-sphere reveal" id="tagSphere" aria-label="Skills sphere"></div>
-      </div>
-    </section>
-
-    <!-- Work -->
-    <section class="section work" id="work">
-      <div class="section__label reveal">03 — Selected Work</div>
-      <h2 class="section__title reveal">Projects I'm proud of.</h2>
-      <div class="cards">
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-1"></div>
-          <div class="card__body">
-            <span class="card__num">01</span>
-            <h3>EdFirst</h3>
-            <p>Turns lecture videos and PDFs into a study workspace: source-linked notes, auto-generated quizzes, a citation-grounded AI tutor and on-chain learning commitments.</p>
-            <div class="card__tags"><span>Next.js</span><span>Express</span><span>TypeScript</span><span>pgvector</span><span>Gemini</span><span>Solidity</span><span>Docker</span></div>
-            <div class="card__links"><a href="https://github.com/kamboj-sajan/Edfirst" target="_blank" rel="noopener">Code ↗</a></div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-2"></div>
-          <div class="card__body">
-            <span class="card__num">02</span>
-            <h3>CodeNova</h3>
-            <p>Cloud IDE with isolated code execution in 10+ languages, a Monaco editor, real-time snippet sharing and a webhook-driven Pro tier.</p>
-            <div class="card__tags"><span>Next.js 15</span><span>TypeScript</span><span>Convex</span><span>Monaco</span><span>Clerk</span><span>Lemon Squeezy</span></div>
-            <div class="card__links">
-              <a href="https://codenova-sigma.vercel.app" target="_blank" rel="noopener">Live ↗</a>
-              <a href="https://github.com/kamboj-sajan/codenova" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-3"></div>
-          <div class="card__body">
-            <span class="card__num">03</span>
-            <h3>AskPDF</h3>
-            <p>RAG app to chat with your PDFs: LangChain chunking and vector search, with persistent multi-document chat sessions.</p>
-            <div class="card__tags"><span>React</span><span>TypeScript</span><span>Express</span><span>LangChain</span><span>Gemini</span><span>PostgreSQL</span><span>Redis</span></div>
-            <div class="card__links">
-              <a href="https://askpdf-livid.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
-              <a href="https://github.com/kamboj-sajan/AskPdf" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-4"></div>
-          <div class="card__body">
-            <span class="card__num">04</span>
-            <h3>AfterPass</h3>
-            <p>Finds the Punjab stubble fires that official satellite counts miss, from burn scars in Sentinel-2 imagery, forecasts where the smoke goes over Delhi, and answers questions in English and Hindi. Built for WeMakeDevs × AWS Environmental Hacks.</p>
-            <div class="card__tags"><span>Python</span><span>React</span><span>AWS Lambda</span><span>Step Functions</span><span>Bedrock</span></div>
-            <div class="card__links">
-              <a href="https://main.dx6zgy1knro1d.amplifyapp.com" target="_blank" rel="noopener">Live ↗</a>
-              <a href="https://github.com/kamboj-sajan/Afterpass" target="_blank" rel="noopener">Code ↗</a>
-            </div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-5"></div>
-          <div class="card__body">
-            <span class="card__num">05</span>
-            <h3>RV32I Pipelined Core</h3>
-            <p>A 5-stage pipelined RISC-V core with full forwarding and hazard handling, verified in lockstep against a Python reference ISS cross-checked with Spike. 147/147 tests pass.</p>
-            <div class="card__tags"><span>SystemVerilog</span><span>Verilator</span><span>Python</span><span>RISC-V</span></div>
-            <div class="card__links"><a href="https://github.com/kamboj-sajan/Risc-V" target="_blank" rel="noopener">Code ↗</a></div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-6"></div>
-          <div class="card__body">
-            <span class="card__num">06</span>
-            <h3>hwdiag</h3>
-            <p>Linux hardware diagnostics: tools for hardware inventory, cache/DRAM latency, STREAM bandwidth, memory testing and perf counters, plus a Python harness for reports, regressions and stress tests.</p>
-            <div class="card__tags"><span>C++</span><span>Python</span><span>Linux</span><span>perf_event</span></div>
-            <div class="card__links"><a href="https://github.com/kamboj-sajan/hwdiag" target="_blank" rel="noopener">Code ↗</a></div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-7"></div>
-          <div class="card__body">
-            <span class="card__num">07</span>
-            <h3>NeuroPilot</h3>
-            <p>AI career coach: resume builder, AI cover letters, mock interview quizzes with performance analytics, and industry insights refreshed by background jobs.</p>
-            <div class="card__tags"><span>Next.js</span><span>Prisma</span><span>Gemini</span><span>Inngest</span><span>Clerk</span></div>
-            <div class="card__links"><a href="https://github.com/kamboj-sajan/NeuroPilot" target="_blank" rel="noopener">Code ↗</a></div>
-          </div>
-        </article>
-        <article class="card reveal" data-tilt>
-          <div class="card__glare"></div>
-          <div class="card__art art-8"></div>
-          <div class="card__body">
-            <span class="card__num">08</span>
-            <h3>Pixi</h3>
-            <p>AI image editing SaaS — restore photos, recolor, remove objects or backgrounds, and generative fill — with a credits system and Stripe payments.</p>
-            <div class="card__tags"><span>Next.js</span><span>TypeScript</span><span>Cloudinary</span><span>MongoDB</span><span>Stripe</span></div>
-            <div class="card__links"><a href="https://github.com/kamboj-sajan/Pixi" target="_blank" rel="noopener">Code ↗</a></div>
-          </div>
-        </article>
-      </div>
-
-      <div class="more">
-        <h3 class="more__title reveal">More on GitHub</h3>
-        <ul class="more__list">
-          <li class="reveal"><a href="https://github.com/kamboj-sajan/medify" target="_blank" rel="noopener"><span>Medify</span><em>Doctor appointment booking with video consultations · Next.js, Prisma, Vonage</em><i>↗</i></a></li>
-          <li class="reveal"><a href="https://github.com/kamboj-sajan/leetcode" target="_blank" rel="noopener"><span>LeetCode</span><em>1,200+ C++ solutions</em><i>↗</i></a></li>
-          <li class="reveal"><a href="https://github.com/kamboj-sajan/ecommerce-sales-analysis-main" target="_blank" rel="noopener"><span>E-commerce Sales Analysis</span><em>Python, SQL &amp; DAX analysis with an interactive dashboard</em><i>↗</i></a></li>
-          <li class="reveal"><a href="https://github.com/kamboj-sajan/Zomato-Data-Analysis-Dashboard-main" target="_blank" rel="noopener"><span>Zomato Data Analysis</span><em>Multi-year restaurant data dashboard in Python</em><i>↗</i></a></li>
-          <li class="reveal"><a href="https://mocha-delight.vercel.app/" target="_blank" rel="noopener"><span>Mocha Delight</span><em>Café website · React</em><i>↗</i></a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Achievements -->
-    <section class="section achievements" id="achievements">
-      <div class="section__label reveal">04 — Achievements</div>
-      <h2 class="section__title reveal">Wins along the way.</h2>
-      <div class="ach-grid">
-        <div class="ach glass reveal"><span class="ach__icon">♞</span><h3>LeetCode Knight</h3><p>Peak 2041 · top 3% globally · 750+ problems solved</p><div class="card__links"><a href="https://leetcode.com/u/Sajan__kamboj/" target="_blank" rel="noopener">LeetCode ↗</a></div></div>
-        <div class="ach glass reveal"><span class="ach__icon">⚔</span><h3>Codeforces Specialist</h3><p>Peak rating 1437 · CodeChef max rating 1626</p><div class="card__links"><a href="https://codeforces.com/profile/kambojsajan646" target="_blank" rel="noopener">Codeforces ↗</a><a href="https://www.codechef.com/users/mysterious_98" target="_blank" rel="noopener">CodeChef ↗</a></div></div>
-        <div class="ach glass reveal"><span class="ach__icon">📡</span><h3>Ericsson Edge Academia 2.0</h3><p>Selected in the Top 700 · 5G, AI, IoT &amp; Telecom</p></div>
-        <div class="ach glass reveal"><span class="ach__icon">🏆</span><h3>TVS Credit E.P.I.C 7.0</h3><p>National Finalist</p></div>
-        <div class="ach glass reveal"><span class="ach__icon">☁</span><h3>Google Cloud Gen AI Academy</h3><p>APAC 2026 · built and deployed AI agents on Cloud Run</p></div>
-        <div class="ach glass reveal"><span class="ach__icon">🌾</span><h3>WeMakeDevs × AWS</h3><p>Built AfterPass for Environmental Hacks (Bharat Builds Tour), Air track</p></div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section contact" id="contact">
-      <div class="section__label reveal">05 — Contact</div>
-      <h2 class="contact__title reveal">Let's build something <span class="gradient-text">unreal</span>.</h2>
-      <p class="muted reveal">Hiring for an SDE intern or full-time role, or have a project in mind? My inbox is always open.</p>
-      <a href="mailto:kambojsajan646@gmail.com" class="btn btn--big magnetic reveal">kambojsajan646@gmail.com</a>
-      <div class="socials reveal">
-        <a href="https://github.com/kamboj-sajan" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://linkedin.com/in/sajan-kamboj-427793289" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="https://leetcode.com/u/Sajan__kamboj/" target="_blank" rel="noopener">LeetCode ↗</a>
-        <a href="https://codeforces.com/profile/kambojsajan646" target="_blank" rel="noopener">Codeforces ↗</a>
-        <a href="https://www.codechef.com/users/mysterious_98" target="_blank" rel="noopener">CodeChef ↗</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <span>© <span id="year"></span> Sajan Kamboj</span>
-    <span>Built with Three.js &amp; a lot of coffee</span>
-  </footer>
-
-  <script type="module" src="main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sajan Kamboj — Software Engineer</title>
+    <meta
+      name="description"
+      content="Sajan Kamboj — software engineer and competitive programmer (LeetCode Knight, Codeforces Specialist) building AI-powered web apps. B.Tech ECE (IoT) @ NSUT Delhi."
+    />
+    <meta name="theme-color" content="#0C0C0C" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sajan Kamboj — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Full-stack, applied AI and competitive programming. Open to SDE internships and full-time roles."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/images/hero-portrait.webp" type="image/webp" fetchpriority="high" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
