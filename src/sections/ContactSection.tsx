@@ -51,7 +51,7 @@ export default function ContactSection() {
         </FadeIn>
 
         <FadeIn delay={0.15} className="flex flex-col items-center gap-4">
-          <ContactButton href={`mailto:${profile.email}`} label="Email Me" />
+          <ContactButton />
           <a
             href={`mailto:${profile.email}`}
             className="py-2 text-sm font-light tracking-wide text-mist/80 underline-offset-4 transition-colors duration-200 hover:text-mist hover:underline sm:text-base"

@@ -12,6 +12,14 @@ export const profile = {
   availability: 'Open to SDE internships & full-time roles',
 };
 
+// The Contact Me form posts to FormSubmit (https://formsubmit.co), which forwards each message to your inbox.
+// The very first message sends an "Activate Form" email to this address: click it once and every message after
+// that is delivered. FormSubmit then emails you a random alias you can put here in place of your address.
+export const contactForm = {
+  endpoint: `https://formsubmit.co/ajax/${profile.email}`,
+  subject: 'New message from your portfolio',
+};
+
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },

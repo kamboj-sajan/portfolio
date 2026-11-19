@@ -61,4 +61,32 @@
     outline-color: #d7e2ea;
     outline-offset: 3px;
   }
+
+  .contact-dialog[open] {
+    animation: contact-dialog-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact-dialog[open]::backdrop {
+    animation: contact-backdrop-in 0.3s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact-dialog[open],
+    .contact-dialog[open]::backdrop {
+      animation: none;
+    }
+  }
+}
+
+@keyframes contact-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@keyframes contact-backdrop-in {
+  from {
+    opacity: 0;
+  }
 }
