@@ -181,6 +181,7 @@ function MoreProjects() {
             </div>
             <div className="flex flex-wrap gap-2 md:justify-end">
               {repo.live && <PillLink href={repo.live} label="Live" />}
+              {repo.demo && <PillLink href={repo.demo} label="Demo" />}
               <PillLink href={repo.code} label="Code" />
             </div>
           </FadeIn>
