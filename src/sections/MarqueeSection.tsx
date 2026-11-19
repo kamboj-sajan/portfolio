@@ -2,8 +2,9 @@ import { useReducedMotion } from 'framer-motion';
 import { forwardRef, useEffect, useRef } from 'react';
 import { marqueeImages } from '../data/portfolio';
 
-const firstRow = marqueeImages.slice(0, 11);
-const secondRow = marqueeImages.slice(11);
+const rowSplit = Math.ceil(marqueeImages.length / 2);
+const firstRow = marqueeImages.slice(0, rowSplit);
+const secondRow = marqueeImages.slice(rowSplit);
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null);

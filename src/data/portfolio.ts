@@ -1,4 +1,4 @@
-import { Award, Cloud, Leaf, Radio, Swords, Trophy } from 'lucide-react';
+import { Award, CircuitBoard, Cloud, GitPullRequest, Leaf, Radio, Swords, Trophy } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export const profile = {
@@ -28,7 +28,7 @@ export const socials = [
 ];
 
 export const about =
-  'I’m an ECE (IoT) undergrad at NSUT Delhi who builds AI-powered web apps with Next.js, Node.js and PostgreSQL, competes in C++ on LeetCode and Codeforces, and goes close to the metal with RISC-V cores and PCBs. Let’s build something incredible together!';
+  'I’m an ECE (IoT) undergrad at NSUT Delhi who builds AI-powered web apps with Next.js, Node.js and PostgreSQL, backends in Go that stay correct when a process dies mid-write, competes in C++ on LeetCode and Codeforces, and goes close to the metal with RISC-V cores and PCBs. Let’s build something incredible together!';
 
 export interface Stat {
   value: number;
@@ -45,19 +45,24 @@ export const stats: Stat[] = [
 
 export const skills = [
   {
-    name: 'Full-Stack Web',
+    name: 'Full-Stack & Backend',
     description:
-      'Production web apps in Next.js, React and TypeScript on Node.js and Express — typed APIs, auth, payments, webhooks and real-time sync over PostgreSQL, Prisma and Redis.',
+      'Production web apps in Next.js, React and TypeScript, with backends in Node.js, Go and FastAPI — typed APIs, auth, payments, idempotent webhooks and real-time sync over PostgreSQL, Prisma and Redis.',
   },
   {
-    name: 'Applied AI',
+    name: 'Applied AI & ML',
     description:
-      'RAG pipelines, AI tutors and autonomous agents with LangChain, LangGraph, Gemini, Azure OpenAI and Bedrock — grounded in sources, with citations instead of guesses.',
+      'RAG pipelines, AI tutors and autonomous agents with LangChain, LangGraph, Gemini, Azure OpenAI and Bedrock, plus vision, graph and multimodal speech models in PyTorch — grounded in sources and measured on held-out data.',
+  },
+  {
+    name: 'Data Engineering',
+    description:
+      'A lakehouse on AWS: PySpark on Glue, incremental loads with Step Functions and EventBridge, Athena and Redshift, all in Terraform, with quality gates that quarantine bad rows. Analytics dashboards in Streamlit and Power BI.',
   },
   {
     name: 'Cloud & DevOps',
     description:
-      'Docker, Kubernetes and GitHub Actions; serverless pipelines on AWS Lambda and Step Functions; deploys to Cloud Run, Azure Container Apps, Amplify and Vercel.',
+      'Docker, Kubernetes and GitHub Actions; serverless pipelines on AWS Lambda, Step Functions and SQS; deploys to Cloud Run, Azure Container Apps, Amplify and Vercel.',
   },
   {
     name: 'Competitive Programming',
@@ -90,6 +95,19 @@ const shot = (file: string, alt: string): ProjectImage => ({ src: `/images/proje
 
 export const projects: Project[] = [
   {
+    name: 'Ledgerline',
+    category: 'Backend · Payments',
+    description:
+      'Payments API and double-entry ledger in Go that stays correct under races, retries and crashes. Postgres itself rejects unbalanced entries, every POST is idempotent (including the card-network call) and webhooks go out through a transactional outbox. A chaos suite SIGKILLs the services 100+ times per run, with 3M property-tested operations.',
+    stack: ['Go', 'PostgreSQL', 'pgx', 'testcontainers', 'k6', 'Docker'],
+    code: 'https://github.com/kamboj-sajan/Ledgerline',
+    images: [
+      shot('ledgerline-1', 'Ledgerline: 0 double charges, 100+ SIGKILLs per chaos run, 3M property-test operations'),
+      shot('ledgerline-2', 'Terminal demo: a payment is authorized and captured, and a retried capture is replayed instead of charged twice'),
+      shot('ledgerline-3', 'Terminal demo: the ledger balances, the audit passes, and the concurrency and chaos tests pass'),
+    ],
+  },
+  {
     name: 'AfterPass',
     category: 'Hackathon · Geospatial AI',
     description:
@@ -101,6 +119,19 @@ export const projects: Project[] = [
       shot('afterpass-1', 'AfterPass landing page: the satellites look at 1:30 PM, the fields burn after'),
       shot('afterpass-2', 'Village-level burn scars over Sentinel-2 imagery in the AfterPass explorer'),
       shot('afterpass-3', 'Smoke forecast drifting from Punjab toward Delhi on the AfterPass map'),
+    ],
+  },
+  {
+    name: 'Issue Intelligence',
+    category: 'ML · Graph Research',
+    description:
+      'Mines 42,555 Ask Different questions (2019–2026) for emerging issues: FDR-controlled anomaly signals, related-question search comparing BM25, embeddings and GraphSAGE over a 47k-node knowledge graph, and calibrated monthly drift alerts, served to a Next.js dashboard.',
+    stack: ['Python', 'PyTorch Geometric', 'FastAPI', 'pgvector', 'Next.js'],
+    code: 'https://github.com/kamboj-sajan/issue_Intelligence',
+    images: [
+      shot('issue-intelligence-1', 'Emerging-issue signal: 124 macOS Catalina questions in one week against 6.8 expected'),
+      shot('issue-intelligence-2', 'Knowledge graph neighbourhood of a question, linked to its tags, categories and the known duplicate'),
+      shot('issue-intelligence-3', 'Issue Intelligence overview: 42,555 indexed questions, 21 anomaly signals and the most active issue categories'),
     ],
   },
   {
@@ -165,6 +196,7 @@ export interface Repo {
   stack: string[];
   code: string;
   live?: string;
+  demo?: string;
   status?: string;
 }
 
@@ -177,11 +209,27 @@ export const moreProjects: Repo[] = [
     code: 'https://github.com/kamboj-sajan/Edfirst',
   },
   {
+    name: 'Pocket AOI',
+    description:
+      'Finds assembly mistakes on a circuit board from one phone photo by comparing it with a known-good golden board, then says what each fault will break. SAM 3.1 locates the parts, classical vision flags suspects and Muse Glimmer can only confirm or reject them. Flagged 86% of on-board defects across 134 real VisA photos. Built for the Meta Global AI Developer Hackathon.',
+    stack: ['Python', 'SAM 3.1', 'Muse Glimmer 30B', 'OpenCV', 'Gradio'],
+    code: 'https://github.com/kamboj-sajan/Pocket-AOI',
+    demo: 'https://youtu.be/38sRM_zsY7Y',
+  },
+  {
     name: 'Precision PR Reviewer',
     description:
-      'AI pull-request reviewer that pairs Tree-sitter AST queries with a ChromaDB call-graph index, so it sees callers in untouched files. On its 5-scenario benchmark: 100% precision and recall, against 50% and 67% for a diff-only baseline.',
-    stack: ['FastAPI', 'Node.js', 'LangChain', 'Tree-sitter', 'ChromaDB', 'MongoDB'],
+      'AI pull-request reviewer that pairs Tree-sitter AST queries with a ChromaDB call-graph index, so it sees callers in untouched files. Webhooks are queued on SQS with retries and a dead-letter queue. On its 5-scenario benchmark: 100% precision and recall, against 50% and 67% for a diff-only baseline.',
+    stack: ['FastAPI', 'Node.js', 'LangChain', 'Tree-sitter', 'ChromaDB', 'MongoDB', 'Amazon SQS'],
     code: 'https://github.com/kamboj-sajan/Precision-PR-Reviewer',
+  },
+  {
+    name: 'Viva',
+    description:
+      'Interviews you about your own GitHub repos like a senior engineer, then grades your spoken answers against the actual code. When you’re wrong, it shows the exact lines that prove it, linked to GitHub.',
+    stack: ['Python', 'FastAPI', 'pgvector', 'tree-sitter', 'React', 'Azure OpenAI'],
+    live: 'https://viva.victoriousbeach-5e8cd7ae.koreacentral.azurecontainerapps.io',
+    code: 'https://github.com/kamboj-sajan/Viva',
   },
   {
     name: 'Wayfinder',
@@ -189,6 +237,14 @@ export const moreProjects: Repo[] = [
       'Autonomous testing agent: point it at a URL and it explores the app in a real browser, checks invariants after every action, learns from past runs and replays the traversal as a state graph — no test scripts.',
     stack: ['TypeScript', 'LangGraph', 'Playwright', 'Qdrant', 'React Flow', 'Azure'],
     code: 'https://github.com/kamboj-sajan/Wayfinder',
+    demo: 'https://drive.google.com/file/d/1-7oueO3SMrvWXI1vLhPWmnbxOXuc2fpt/view?usp=sharing',
+  },
+  {
+    name: 'Retail Reviews Lakehouse',
+    description:
+      'Data lake and warehouse on AWS over 64M Amazon reviews: PySpark on Glue through raw, cleaned and curated layers, monthly incremental loads with Step Functions that change nothing when re-run, a quality gate that quarantines bad rows, and benchmarks of the same queries on every layer.',
+    stack: ['PySpark', 'AWS Glue', 'Step Functions', 'Athena', 'Redshift', 'Terraform'],
+    code: 'https://github.com/kamboj-sajan/retail-reviews-lakehouse',
   },
   {
     name: 'Nimbus',
@@ -198,12 +254,11 @@ export const moreProjects: Repo[] = [
     code: 'https://github.com/kamboj-sajan/Nimbus',
   },
   {
-    name: 'Viva',
+    name: 'Alzheimer’s Speech Detection',
     description:
-      'Interviews you about your own GitHub repos like a senior engineer, then grades your spoken answers against the actual code, citing the exact file and lines.',
-    stack: ['Python', 'pgvector', 'tree-sitter', 'Azure OpenAI'],
-    code: 'https://github.com/kamboj-sajan/Viva',
-    status: 'In progress',
+      'Detects dementia and MCI from spontaneous speech by fusing Wav2Vec2 audio, BERT transcript and prosodic features through stacked co-attention layers. ROC-AUC 0.889 ± 0.016 on the PROCESS-2 official test split, over 5 seeds.',
+    stack: ['PyTorch', 'Wav2Vec2', 'BERT', 'librosa', 'spaCy'],
+    code: 'https://github.com/kamboj-sajan/AlzeimerSpeechDetection',
   },
   {
     name: 'AskPDF',
@@ -219,6 +274,14 @@ export const moreProjects: Repo[] = [
       'Two-site enterprise network: multi-area OSPF, eBGP to two ISPs with automatic failover, a GRE-over-IPsec VPN and a Python checker that cross-validates all 11 device configs.',
     stack: ['Cisco IOS', 'OSPF', 'BGP', 'IPsec', 'Python'],
     code: 'https://github.com/kamboj-sajan/cisco-office-network-lab',
+  },
+  {
+    name: 'Zomato Bangalore Dashboard',
+    description:
+      'Interactive dashboard on what drives ratings across 9,359 Bangalore restaurants, filterable by area, format, price, online ordering and table booking, with a Power BI version of the report.',
+    stack: ['Python', 'pandas', 'Streamlit', 'Plotly', 'Power BI'],
+    live: 'https://zomato-bangalore-dashboard.streamlit.app',
+    code: 'https://github.com/kamboj-sajan/Zomato-Data-Analysis-Dashboard-main',
   },
   {
     name: 'Pixi',
@@ -284,25 +347,48 @@ export const achievements: Achievement[] = [
     detail: 'Built AfterPass for Environmental Hacks (Bharat Builds Tour), Air track',
     icon: Leaf,
   },
+  {
+    title: 'Meta Global AI Developer Hackathon',
+    detail: 'Built Pocket AOI for the manufacturing track: circuit-board inspection from one phone photo',
+    icon: CircuitBoard,
+    links: [
+      { label: 'Code', href: 'https://github.com/kamboj-sajan/Pocket-AOI' },
+      { label: 'Demo', href: 'https://youtu.be/38sRM_zsY7Y' },
+    ],
+  },
+  {
+    title: 'Open Source · Hugging Face',
+    detail: 'Reported two torch.compile(fullgraph=True) training bugs in Whisper and Wav2Vec2 in transformers, and opened a PR to fix the Wav2Vec2 one',
+    icon: GitPullRequest,
+    links: [
+      { label: 'Pull request', href: 'https://github.com/huggingface/transformers/pull/50544' },
+      { label: 'Issue', href: 'https://github.com/huggingface/transformers/issues/50459' },
+    ],
+  },
 ];
 
 export const marqueeImages = [
   'afterpass-hero',
+  'ledgerline',
   'codenova-editor',
   'afterpass-smoke',
+  'issue-intelligence',
   'neuropilot-hero',
   'riscv-block',
   'askpdf',
+  'pocket-aoi',
   'afterpass-scars',
   'portfolio-v1-hero',
   'hwdiag-latency',
   'codenova-pricing',
   'afterpass-ask',
   'afterpass-overview',
+  'lakehouse-dashboard',
   'mocha-delight',
   'riscv-waveform',
   'neuropilot-features',
   'afterpass-delhi',
+  'speech-seeds',
   'portfolio-v1-skills',
   'codenova-snippets',
   'afterpass-story',

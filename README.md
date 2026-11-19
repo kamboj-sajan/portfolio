@@ -17,7 +17,7 @@ Everything on the page (profile, stats, skills, projects, achievements, links) l
 
 - **Hero portrait:** `public/images/hero-portrait.webp` is the 3D character from the design template, not a picture of me. Replace it with a transparent cut-out of yourself, about 1040×1126 px.
 - **Project cards:** each card takes three images from `public/images/projects/`: two stacked on the left, one tall on the right.
-- **Marquee:** `public/images/marquee/` holds 840×540 WebP tiles. The first 11 entries of `marqueeImages` form the top row, the rest the bottom row.
+- **Marquee:** `public/images/marquee/` holds 840×540 WebP tiles. The first half of `marqueeImages` forms the top row, the rest the bottom row.
 
 ## 3D scenes
 
