@@ -1,4 +1,5 @@
 import { MotionConfig } from 'framer-motion';
+import { ContactFormProvider } from './components/ContactForm';
 import AboutSection from './sections/AboutSection';
 import AchievementsSection from './sections/AchievementsSection';
 import ContactSection from './sections/ContactSection';
@@ -10,15 +11,17 @@ import SkillsSection from './sections/SkillsSection';
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <main className="bg-ink font-kanit" style={{ overflowX: 'clip' }}>
-        <HeroSection />
-        <MarqueeSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <AchievementsSection />
-        <ContactSection />
-      </main>
+      <ContactFormProvider>
+        <main className="bg-ink font-kanit" style={{ overflowX: 'clip' }}>
+          <HeroSection />
+          <MarqueeSection />
+          <AboutSection />
+          <SkillsSection />
+          <ProjectsSection />
+          <AchievementsSection />
+          <ContactSection />
+        </main>
+      </ContactFormProvider>
     </MotionConfig>
   );
 }

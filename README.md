@@ -19,6 +19,12 @@ Everything on the page (profile, stats, skills, projects, achievements, links) l
 - **Project cards:** each card takes three images from `public/images/projects/`: two stacked on the left, one tall on the right.
 - **Marquee:** `public/images/marquee/` holds 840×540 WebP tiles. The first half of `marqueeImages` forms the top row, the rest the bottom row.
 
+## Contact form
+
+**Contact Me** opens a form (`src/components/ContactForm.tsx`) that posts to [FormSubmit](https://formsubmit.co), which emails each message to the address in `contactForm.endpoint` in `src/data/portfolio.ts`. Replies go straight to the sender, and a hidden honeypot field drops bot submissions.
+
+The first message sends an "Activate Form" email to that address. Click its link once and every message after that is delivered. FormSubmit then emails you a random alias you can use in the endpoint instead of your address.
+
 ## 3D scenes
 
 Two Three.js scenes, loaded lazily in their own chunk once the page has rendered:
